@@ -10,16 +10,9 @@ Due interfacce, **lo stesso motore e gli stessi risultati**:
 - **TUI** (`calibrefind.py`, [Textual](https://textual.textualize.io/)) — nel terminale, tutta da tastiera
 - **GUI** (`calibrefind_flet.py`, [Flet](https://flet.dev/)) — finestra desktop o server web, dal browser
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ autore: gibson    titolo: mancer    soglia: ████████── 30   │
-├─────────────────────────────────────────────────────────────┤
-│  1  Neuromancer                    William Gibson     92    │
-│  2  Count Zero                     William Gibson     88    │
-│  3  Mona Lisa Overdrive            William Gibson     85    │
-│  ...  la lista si allunga mentre scorri                     │
-└─────────────────────────────────────────────────────────────┘
-```
+| TUI (terminale) | GUI Flet (browser) |
+|---|---|
+| ![TUI](docs/tui.png) | ![Flet](docs/flet.png) |
 
 ## Come funziona la ricerca
 

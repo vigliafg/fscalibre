@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# cfindf — avvio rapido della GUI Flet di calibrefind.
+#
+#   cfindf                            # finestra desktop (o web se senza display)
+#   cfindf --web                      # server web su http://127.0.0.1:8550
+#   cfindf --web --host 0.0.0.0       # raggiungibile dalla rete locale
+#   cfindf -a gibson -t mancer        # criteri combinati
+#   cfindf -g "Letteratura Romanzi e Racconti"
+#   cfindf -l /altro/metadata.db ...  # libreria diversa
+#   CALIBRE_LIBRARY=/percorso/metadata.db cfindf
+#
+# Tutte le opzioni sono quelle di calibrefind_flet.py (cfindf --help).
+set -euo pipefail
+
+# percorso reale dello script, anche se invocato da un symlink
+real="$(readlink -f -- "${BASH_SOURCE[0]}")"
+dir="$(cd -- "$(dirname -- "$real")" && pwd)"
+
+lib="${CALIBRE_LIBRARY:-$HOME/CalibreLibrary/metadata_big.db}"
+[ -f "$lib" ] || lib="$HOME/CalibreLibrary/metadata.db"
+
+py="$dir/.venv/bin/python"
+[ -x "$py" ] || py="python3"
+
+# -l di default va prima di "$@": un -l esplicito dell'utente lo sostituisce
+exec "$py" "$dir/calibrefind_flet.py" -l "$lib" "$@"
